@@ -1,8 +1,7 @@
-gh-webhook-processor
+gh-webhook-listener
 ====================
 
-This application listens for GH webhooks, and processes them accordingly.  
-
+This application listens for GitHub's webhooks, and will process the received payload accordingly.  Currently, this means it will post commit information to the specified JIRA ticket.
 
 ### Starting the listener
 **Start server:** `sudo node server.js`
@@ -11,6 +10,6 @@ This application listens for GH webhooks, and processes them accordingly.
 
 
 ### Commit Message Syntax
-"blah blah \<JIRA ISSUE\> blah blah."
+"Lorem ipsum \<JIRA ISSUE\> dolor sit amet"
 
 **Example:**  _HXEP-100 This is my message_
