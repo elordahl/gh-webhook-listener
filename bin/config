@@ -7,3 +7,9 @@ port=80
 
 [github]
 secret=thisisasecret
+
+[ssl]
+key=/path/to/key.key
+cert=/path/to/cert.crt
+ca=/path/to/ca.crt
+

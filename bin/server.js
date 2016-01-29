@@ -13,6 +13,10 @@ var jira_hostname = properties.get('jira.hostname');
 var jira_port = properties.get('jira.port');
 var gh_secret = properties.get('github.secret');
 
+var key_path = properties.get('ssl.key');
+var cert_path = properties.get('ssl.cert');
+var ca_path = properties.get('ssl.ca');
+
 /**
  * Logs things nicely
  */
@@ -153,9 +157,9 @@ function post_jira(commit) {
  *Listen for GH payloads
  */
   var options = {
-    key: fs.readFileSync('/home/jenkins/gh-webhook-processor/bin/key.key'),
-    cert: fs.readFileSync('/home/jenkins/gh-webhook-processor/bin/cert.crt'),
-    ca: fs.readFileSync('/home/jenkins/gh-webhook-processor/bin/ca.crt')
+    key: fs.readFileSync(key_path),
+    cert: fs.readFileSync(cert_path),
+    ca: fs.readFileSync(ca_path)
   };
 
   var server = https.createServer(options, function (req, res) {
