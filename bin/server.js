@@ -1,7 +1,6 @@
 /*jslint indent:2*/
 "use strict";
 
-var http = require('http');
 var https = require('https');
 var crypto = require('crypto');
 var fs = require('fs');
@@ -11,6 +10,9 @@ var properties = pr('config');
 var listener_port = properties.get('listener.port');
 var jira_hostname = properties.get('jira.hostname');
 var jira_port = properties.get('jira.port');
+var jira_api_user = properties.get('jira.api_user');
+var jira_pw = properties.get('jira.pw');
+
 var gh_secret = properties.get('github.secret');
 
 var key_path = properties.get('ssl.key');
@@ -130,9 +132,10 @@ function post_jira(commit) {
         'Content-Type': 'application/json',
         'Content-Length': post_data.length
       },
-      auth: 'scm:scm4dev'
+      auth: jira_api_user + ':' + jira_pw
     };
 
+    // will this work if http?
     var post_req = https.request(post_options, function (res) {
       log("Posting comment to JIRA issue: " + issue_id);
       log("Response Status Code: " + res.statusCode);

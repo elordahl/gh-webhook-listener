@@ -4,6 +4,8 @@ port=443
 [jira]
 hostname=test.com
 port=80
+api_user=user
+pw=pw
 
 [github]
 secret=thisisasecret
